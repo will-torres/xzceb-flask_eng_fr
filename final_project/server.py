@@ -7,12 +7,16 @@ app = Flask("Web Translator")
 #E2F Endpoint
 @app.route("/englishToFrench")
 def englishToFrench():
-    return translator.englishToFrench(textToTranslate)
+    textToTranslate = request.args.get('textToTranslate')
+    french_text = translator.english_to_french(textToTranslate)
+    return french_text
 
 #F2E Endpoint
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
-    return translator.englishToFrench(textToTranslate)
+    textToTranslate = request.args.get('textToTranslate')
+    english_text = translator.french_to_english(textToTranslate)
+    return english_text
 
 
 @app.route("/")
